@@ -171,6 +171,7 @@ def my_snippets_page(request):
     """
     context = get_base_context(request, 'Мои сниппеты')
     context['records'] = Snippet.objects.filter(user=request.user)
+    context['count'] = len(context['records'])
     return render(request, 'pages/my_snippets.html', context)
 
 
