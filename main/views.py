@@ -21,7 +21,8 @@ def get_base_context(request, pagename):
     """
     Получение базового контекста
 
-    :param request: объект c деталями запроса. Используется для получения авторизованного пользователя
+    :param request: объект c деталями запроса.
+    Используется для получения авторизованного пользователя
     :type request: :class:`django.http.HttpRequest`
     :return: словарь с предустановленными значениями
     :rtype: :class:`dict`
@@ -46,8 +47,6 @@ def index_page(request):
     return render(request, 'pages/index.html', context)
 
 
-
-
 @login_required(login_url='/login/')
 def add_snippet_page(request):
     """
@@ -55,15 +54,17 @@ def add_snippet_page(request):
 
     :param request: объект c деталями запроса
     :type request: :class:`django.http.HttpRequest`
-    :return: объект ответа сервера с HTML-кодом внутри в случае, если идёт GET-запрос на страницу
+    :return: объект ответа сервера с HTML-кодом внутри в случае,
+    если идёт GET-запрос на страницу
     :return: перенаправление на главную страницу в случае POST-запроса
-    :raises: :class:`django.http.Http404` в случае, если сниппет с указанным ID не существует
+    :raises: :class:`django.http.Http404` в случае,
+    если сниппет с указанным ID не существует
     """
     context = get_base_context(request, 'Добавление нового сниппета')
     if request.method == 'POST':
         addform = BaseSnippetForm(request.POST)
         if addform.is_valid():
-            record=Snippet(
+            record = Snippet(
                 name=addform.data['name'],
                 creation_date=datetime.datetime.now(tz=timezone.utc),
                 user=request.user
@@ -97,7 +98,8 @@ def view_snippet_page(request, snippet_id):
     :type snippet_id: int
     :return: объект ответа сервера с HTML-кодом внутри
     :rtype: :class:`django.http.HttpResponse`
-    :raises: :class:`django.http.Http404` в случае, если сниппет с указанным ID не существует
+    :raises: :class:`django.http.Http404` в случае,
+    если сниппет с указанным ID не существует
     """
     context = get_base_context(request, 'Просмотр сниппета')
     try:
@@ -130,8 +132,8 @@ def login_page(request):
     if request.method == 'POST':
         loginform = LoginForm(request.POST)
         if loginform.is_valid():
-            username=loginform.data['username']
-            password=loginform.data['password']
+            username = loginform.data['username']
+            password = loginform.data['password']
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
@@ -185,8 +187,10 @@ def view_formatted_code_page(request, snippet_id, utility):
     :type snippet_id: :class:`int`
     :param utility: имя утилиты
     :type utility: :class:`str`
-    :raises: :class:`django.http.Http404` в случае, если сниппет с указанным ID не существует
-    :raises: :class:`django.http.Http404` в случае, если указанная утилита не поддерживается
+    :raises: :class:`django.http.Http404` в случае,
+    если сниппет с указанным ID не существует
+    :raises: :class:`django.http.Http404` в случае,
+    если указанная утилита не поддерживается
     :return: объект ответа сервера с HTML-кодом внутри
     """
     context = get_base_context(request, 'Форматирование {}'.format(utility))
@@ -195,8 +199,8 @@ def view_formatted_code_page(request, snippet_id, utility):
         context['record'] = record
         context['addform'] = BaseSnippetForm(
             initial={
-                'user':record.user.username,
-                'name':record.name,
+                'user': record.user.username,
+                'name': record.name,
             }
         )
         formatted_code = record.get_formatted_code(utility)
@@ -218,10 +222,13 @@ def delete_snippet_page(request, snippet_id):
     :type request: :class:`django.http.HttpRequest`
     :param snippet_id: id сниппета
     :type snippet_id: :class:`int`
-    :raises: :class:`django.http.Http404` в случае, если сниппет с указанным ID не существует
-    :raises: :class:`django.http.Http404` в случае, если сниппет с указанным ID не принадлежит пользователю
+    :raises: :class:`django.http.Http404` в случае,
+    если сниппет с указанным ID не существует
+    :raises: :class:`django.http.Http404` в случае,
+    если сниппет с указанным ID не принадлежит пользователю
     :return: перенаправление на страницу списка сниппетов
-    :return: перенаправление на страницу логина в случае неавторизованного пользователя
+    :return: перенаправление на страницу логина
+    в случае неавторизованного пользователя
     """
     records = Snippet.objects.filter(id=snippet_id, user=request.user)
     if records.count() == 0:
