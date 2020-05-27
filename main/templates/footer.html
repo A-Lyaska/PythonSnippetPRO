@@ -1,0 +1,14 @@
+{% load static %}
+<div class="container">
+    <div class="row">
+        {% block footer %}
+        <div class="col10">
+            <span class="text-muted">&copy; Школа программистов, {% now "Y" %}. <br>
+                Финальная контрольная работа по курсу &laquo;Промышленное программирование&raquo;</span>
+        </div>
+        <div class="col mt-2" align="right">
+            <a href="{% static '_build/html/index.html' %}" target="_blank" class="btn btn-primary">Документация</a>
+        </div>
+        {% endblock %}
+    </div>
+</div>

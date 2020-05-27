@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <form action="" method="post">
+            {% csrf_token %}
+            <h3 align="center">Вы уверены?</h3>
+            <div class="form-group row">
+                <div class="col mt-3" align="center">
+                    <input type="submit" class="btn btn-dark" value="Удалить">
+                    <a href="#" onclick="window.history.back();" class="btn btn-light">Отмена</a>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

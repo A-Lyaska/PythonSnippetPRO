@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+<style>
+    textarea {
+        font-family:monospace;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <form>
+            <fieldset disabled>
+                <div class="form-group row">
+                    <div class="col col-8">
+                        {{ addform.name.label }}: {{ addform.name }}
+                    </div>
+                    <div class="col col-4">
+                        {{ addform.user.label }}: {{ addform.user }}
+                    </div>
+                </div>
+                {% block extra_fields %}{% endblock %}
+                <hr>
+                <div class="form-group row">
+                    <div class="col">
+                        <div class="p-2 h-100 highlight" style="border:1px solid #ced4da; border-radius:5px;">
+                            {{ pygmentcode|safe }}
+                        </div>
+                        <style>{{ pygmentstyle|safe }}</style>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    {% block extra_buttons %}
+        <div class="col8 ml-3">
+            <a href="#" onclick="window.history.back();" class="btn btn-light">Назад</a>
+        </div>
+    {% endblock %}
+    <div class="col" align='right'>
+        <a href="{% url 'delete_snippet' record.id %}" class="btn btn-dark">Удалить</a>
+    </div>
+</div>
+
+
+{% endblock %}

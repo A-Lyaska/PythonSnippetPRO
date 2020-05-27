@@ -1,0 +1,44 @@
+[
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$120000$pEHuaJfhY7p9$extPTlGNrecqJVSrCU0uFcLl3G1wzVJr/DeWQVfOMEc=",
+        "last_login": "2019-05-21T13:41:34.693Z",
+        "is_superuser": true,
+        "username": "vasya",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2019-05-21T05:15:49.631Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "main.snippet",
+    "pk": 7,
+    "fields": {
+        "name": "test",
+        "creation_date": "2019-05-21T11:38:52.917Z",
+        "user": 1,
+        "sha1": "53397d472c9f2e80ae99f3eede138e5df05c25d7",
+        "sha256": "c95a3d956df77e1ecd1804267aa70fb55d9b9063bda3b40eaffe9e15586a75ad",
+        "md5": "c02d25553647770b2ce40235aaf1b82d"
+    }
+},
+{
+    "model": "main.snippet",
+    "pk": 10,
+    "fields": {
+        "name": "\u041a\u043b\u0430\u0441\u0441\u043d\u0430\u044f \u0440\u0430\u0431\u043e\u0442\u0430",
+        "creation_date": "2019-05-21T15:23:36.916Z",
+        "user": 1,
+        "sha1": "b3b39eb8dd4d8b58296d717d6109a10cbeaea663",
+        "sha256": "f7168aa74f5ba28a390bb5738fdec56361771fd5ac5a28db90a4d5cd05c6c019",
+        "md5": "ca524bdb1939c82c09507e9a0f9d820c"
+    }
+}
+]

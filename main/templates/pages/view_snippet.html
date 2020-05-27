@@ -1,0 +1,20 @@
+{% extends 'pages/base_snippet.html' %}
+
+{% block extra_fields %}
+<div class="form-group row">
+    <div class="col col-8">
+        {{ addform.sha256.label }}: {{ addform.sha256 }}
+    </div>
+    <div class="col col-4">
+        {{ addform.md5.label }}: {{ addform.md5 }}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_buttons %}
+<div class="col8 ml-3">
+    <a href="{% url 'view_format' record.id 'pep8' %}" class="btn btn-primary">pep8</a>
+    <a href="{% url 'view_format' record.id 'docformatter' %}" class="btn btn-success">docformatter</a>
+    <a href="{% url 'view_format' record.id 'autoflake' %}" class="btn btn-danger">autoflake</a>
+</div>
+{% endblock %}
