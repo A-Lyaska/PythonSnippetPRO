@@ -66,8 +66,8 @@ class BaseFormatter:
         :return: код, хранящийся в файле.
         :rtype: :class:`str`
         """
-        with open(filename, 'r') as f:
-            code = f.read()
+        with open(filename, 'r') as file:
+            code = file.read()
         return code
 
     def save_formatted_code_to_file(self):
@@ -106,11 +106,11 @@ class Pep8Formatter(BaseFormatter):
 
         Утилита вызывается через программный интерфейс
         """
-        with open(self.filename, 'r') as f:
-            self.code = f.read()
+        with open(self.filename, 'r') as file:
+            self.code = file.read()
         fixed_code = autopep8.fix_code(self.code, options={'aggressive': 1})
-        with open(self.get_formatted_code_name(), 'w') as f:
-            f.write(fixed_code)
+        with open(self.get_formatted_code_name(), 'w') as file:
+            file.write(fixed_code)
 
 
 class CommandLineFormatter(BaseFormatter):
