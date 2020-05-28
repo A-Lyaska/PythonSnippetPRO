@@ -171,9 +171,18 @@ class AutoFlakeFormatter(CommandLineFormatter):
            '--remove-unused-variables ' \
            '--in-place'
 
+class UnifyFormatter(CommandLineFormatter):
+    """
+    Класс, форматирующий код через Unify
+
+    Unify - утилита, приводящая в соответсвие строки кода
+    """
+    UTILITY = 'unify'
+    OPTS = '--in-place'
 
 AVAILABLE_FORMATTERS = {
     'pep8': Pep8Formatter,
     'docformatter': DocFormatter,
     'autoflake': AutoFlakeFormatter,
+    'unify': UnifyFormatter
 }
